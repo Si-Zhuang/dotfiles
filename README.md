@@ -8,9 +8,11 @@
     - tmux
     - ag
     - ctags
+    - powerline-go (only for zsh.)
+        - For bash, there is a need for fix.
+
 - In the future, you will be able to configure...
     - fish shell
-    - powerline-go
     - rust
     - fzf
 
