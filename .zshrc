@@ -9,14 +9,21 @@ export GOPATH=$HOME/go
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
-# PS1="[\u@ymac  \w \t]\$ "
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-function _update_ps1() {
+function powerline_precmd() {
     PS1="$(~/go/bin/powerline-go -error $? -modules user,perms,cwd,git,exit,time -priority cwd,user,git-branch,git-status,perm,exit)"
 }
 
+function install_powerline_precmd() {
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+    precmd_functions+=(powerline_precmd)
+}
+
 if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    install_powerline_precmd
 fi
