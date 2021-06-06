@@ -2,6 +2,7 @@ alias ls='ls -AG'
 alias la='ls -AGl'
 alias gip='curl http://gungnir-odin.appspot.com/util/clientinfo'
 alias x86='arch -x86_64 zsh'
+alias ctags="`brew --prefix`/bin/ctags"
 
 #export JAVA_HOME=$(/usr/libexec/java_home -v 14.0)
 export PYTHONIOENCODING='utf-8'
