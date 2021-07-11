@@ -143,7 +143,10 @@ echo "...Done"
 # 7: ctags: Note: this ctags means "brew ctags", not ctags, which is a default command of the MacOS due to an alias in .zshrc or .bashrc
 if !(type "ctags" > /dev/null 2>&1); then
     echo "[INSTALL]: Start installing ctags (7/7)"
-    brew install ctags
+    # brew install ctags # brew ctags
+    # Below, we install universal-ctags
+    brew tap universal-ctags/universal-ctags
+    brew install --HEAD universal-ctags
     echo "...Done"
 else
     echo "ctags has already been installed."
